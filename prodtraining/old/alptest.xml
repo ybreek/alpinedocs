@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>AsciiDoc Markup Syntax Summary</title>
+</articleinfo>
+<simpara>A summary of the most commonly used markup.
+For a complete reference see the <emphasis>AsciiDoc User Guide</emphasis>.</simpara>
+<section id="_text_formatting">
+<title>Text formatting</title>
+<literallayout class="monospaced">*bold text*                 (boldface font)
+_emphasized text_           (normally italics)
+'emphasized text'
++monospaced text+           (proportional font)
+`monospaced text`           (inline literal passthrough)</literallayout>
+</section>
+<section id="_document_links">
+<title>Document links</title>
+<literallayout class="monospaced">[[id]]                      (define link target)
+&lt;&lt;id,caption&gt;&gt;              (link to target id)
+link:filename#id[caption]   (link to external HTML file)</literallayout>
+</section>
+<section id="_urls">
+<title>URLs</title>
+<literallayout class="monospaced">Use normal URL and email addess syntax or:</literallayout>
+<literallayout class="monospaced">http:address[caption]       (link to web page)
+mailto:address[caption]     (link to mail recipient)</literallayout>
+</section>
+<section id="_images">
+<title>Images</title>
+<literallayout class="monospaced">image:filename[caption]     (inline image)
+image::filename[caption]    (block image)</literallayout>
+</section>
+<section id="_document_header">
+<title>Document header</title>
+<literallayout class="monospaced">The Document Title
+==================
+author &lt;email&gt;
+revision, date</literallayout>
+<simpara>author, email, revision and date are optional.</simpara>
+</section>
+<section id="_section_title_underlines">
+<title>Section title underlines</title>
+<literallayout class="monospaced">Underlined:</literallayout>
+<literallayout class="monospaced">Level 0                     (document title)
+=======
+Level 1
+-------
+Level 2
+~~~~~~~
+Level 3
+^^^^^^^
+Level 4                     (bottom level)
++++++++</literallayout>
+<literallayout class="monospaced">Single line:</literallayout>
+<literallayout class="monospaced">= Level 0 =                 (document title)
+== Level 1 ==
+=== Level 2 ===
+==== Level 3 ====
+===== Level 4 =====         (bottom level)</literallayout>
+</section>
+<section id="_paragraphs">
+<title>Paragraphs</title>
+<simpara>A normal paragraph.           (styles: literal,verse,quote,listing,
+                                       NOTE,TIP,WARNING,IMPORTANT,CAUTION)
+  An indented literal
+  paragraph.</simpara>
+</section>
+<section id="_delimited_blocks">
+<title>Delimited blocks</title>
+<simpara>Delimiters must begin at left margin.</simpara>
+<literallayout class="monospaced">-------------------         (styles: source,music,graphviz)
+listing block
+-------------------</literallayout>
+<literallayout class="monospaced">...................         (styles: listing,verse)
+literal block
+...................</literallayout>
+<literallayout class="monospaced">*******************
+sidebar block
+*******************</literallayout>
+<literallayout class="monospaced">[style, author, cite]
+___________________         (styles: quote,verse)
+quote block
+___________________</literallayout>
+<literallayout class="monospaced">===================         (styles: NOTE,TIP,WARNING,
+example block                        IMPORTANT,CAUTION)
+===================</literallayout>
+<literallayout class="monospaced">///////////////////
+comment block
+///////////////////</literallayout>
+<literallayout class="monospaced">+++++++++++++++++++         (styles: pass,asciimath,latexmath)
+passthrough block
++++++++++++++++++++</literallayout>
+<literallayout class="monospaced">[style]                     (styles: abstract,partintro)
+--
+open block
+--</literallayout>
+</section>
+<section id="_more_block_elements">
+<title>More block elements</title>
+<literallayout class="monospaced">[attributes list]
+.Block title
+// Comment line
+include::filename[]</literallayout>
+</section>
+<section id="_tables">
+<title>Tables</title>
+<literallayout class="monospaced">.An example table
+[width="40%",cols="^,2m",frame="topbot",options="header,footer"]
+|======================
+|Column 1 |Column 2
+|1        |Item 1
+|2        |Item 2
+|3        |Item 3
+|6        |Three items
+|======================</literallayout>
+<literallayout class="monospaced">Common attributes:</literallayout>
+<literallayout class="monospaced">grid:    none,cols,rows,all
+frame:   topbot,none,sides,all
+options: header,footer
+format:  psv,csv,dsv
+valign:  top,bottom,middle
+width:   1%..100%
+cols:    colspec[,colspec,...]</literallayout>
+<literallayout class="monospaced">colspec:    [multiplier*][align][width][style]
+multiplier: 1...
+width:      1... or 1%...100%
+align:      [horiz][.vert]
+             horiz: &lt; (left), ^ (center), &gt; (right)
+             vert:  &lt; (top),  ^ (middle), &gt; (bottom)
+style:      d[efault], e[mphasis], m[onospaced], a[sciidoc],
+            s[trong], l[iteral], v[erse], h[eader]
+cell:       [cellspec]|data
+cellspec:   [span*|+][align][style]
+span:       [colspan][.rowspan]
+             colspan: 1...
+             rowspan: 1...</literallayout>
+</section>
+<section id="_bulleted_lists">
+<title>Bulleted lists</title>
+<itemizedlist>
+<listitem>
+<simpara>
+item text
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+item text
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+item text
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+item text
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+item text
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+item text
+</simpara>
+<literallayout class="monospaced">(styles: callout,bibliography)</literallayout>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</section>
+<section id="_numbered_lists">
+<title>Numbered lists</title>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+arabic (decimal) numbering
+</simpara>
+<orderedlist numeration="loweralpha">
+<listitem>
+<simpara>
+loweralpha numbering
+</simpara>
+<orderedlist numeration="upperalpha">
+<listitem>
+<simpara>
+upperalpha numbering
+</simpara>
+<orderedlist numeration="lowerroman">
+<listitem>
+<simpara>
+lowerroman numbering
+</simpara>
+<orderedlist numeration="upperroman">
+<listitem>
+<simpara>
+upperroman numbering
+</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+arabic (decimal) numbering
+</simpara>
+<orderedlist numeration="loweralpha">
+<listitem>
+<simpara>
+loweralpha numbering
+</simpara>
+<orderedlist numeration="lowerroman">
+<listitem>
+<simpara>
+lowerroman numbering
+</simpara>
+<orderedlist numeration="upperalpha">
+<listitem>
+<simpara>
+upperalpha numbering
+</simpara>
+<orderedlist numeration="upperroman">
+<listitem>
+<simpara>
+upperroman numbering
+</simpara>
+<literallayout class="monospaced">(styles: arabic,loweralpha,upperalpha,lowerroman,upperroman)</literallayout>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</section>
+<section id="_labeled_lists">
+<title>Labeled lists</title>
+<variablelist>
+<varlistentry>
+<term>
+label
+</term>
+<listitem>
+<simpara>
+item text
+</simpara>
+<variablelist>
+<varlistentry>
+<term>
+label
+</term>
+<listitem>
+<simpara>
+item text
+</simpara>
+<variablelist>
+<varlistentry>
+<term>
+label
+</term>
+<listitem>
+<simpara>
+item text
+</simpara>
+<variablelist>
+<varlistentry>
+<term>
+label
+</term>
+<listitem>
+<simpara>
+item text
+</simpara>
+<literallayout class="monospaced">(styles: horizontal,vertical,glossary,qanda,bibliograpy)</literallayout>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="_more_inline_elements">
+<title>More inline elements</title>
+<literallayout class="monospaced">footnote:[footnote text]    (document footnote)</literallayout>
+</section>
+</article>

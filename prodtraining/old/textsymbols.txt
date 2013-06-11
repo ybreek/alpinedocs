@@ -1,0 +1,19 @@
+
+
+ |---->
+ |---->
+ 
+ 
+ |---->
+ 
+ set: module name
+   setting: value
+   settings: (value1,value2)
+   level1->setting:value
+   level1->level2->setting:value
+
+ setting may be 
+ text to be entered
+ option to be picked
+ radio button to be picked
+ multiple checkboxes to be clicked  

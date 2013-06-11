@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>Alpine Product Training</title>
+</articleinfo>
+<section id="_overview">
+<title>Overview</title>
+<simpara>In this set of activities we are going to explore a small subset of Alpine DataMiner&#8217;s features and use these to create two alternate prediction models for a moderately large data set.  We will compare these prediction models using a graph called an ROC.
+Before we set about this task we need to be able to reliably execute certain elementary atomic tasks that will be needed repeatedly.</simpara>
+<section id="_elementary_tasks">
+<title>Elementary Tasks</title>
+</section>
+<section id="_log_in_to_alpine_data_miner">
+<title>Log in to Alpine Data Miner ====</title>
+</section>
+<section id="_create_a_connection">
+<title>Create a connection ====</title>
+</section>
+<section id="_create_a_flow">
+<title>Create a Flow ====</title>
+</section>
+<section id="_connect_two_modules_with_a_flow">
+<title>Connect two modules with a flow ====</title>
+</section>
+<section id="_set_properties_on_a_module">
+<title>Set properties on a module ====</title>
+</section>
+<section id="_import_data_from_a_csv_file">
+<title>Import Data from a CSV file ====</title>
+</section>
+<section id="_remap_rename_certain_columns_on_imported_data">
+<title>Remap/rename certain columns on imported data ====</title>
+</section>
+<section id="_create_a_join_definition">
+<title>Create a Join definition ====</title>
+</section>
+<section id="_run_a_flow">
+<title>Run a flow ====</title>
+</section>
+<section id="_tasks">
+<title>Tasks</title>
+<itemizedlist>
+<listitem>
+<simpara>
+Import data from file ORD_2008
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Import data from file carriers.txt
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Initial flow
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+summary stats
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+null val rep
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+box plot
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+scatter plot
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+join
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+improved box plot
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+variable selection
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+sampling
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+training
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+logreg
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+naive bayes
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>
+validation
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+ROC
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+nb, logreg, val as inputs
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>
+LogReg Predictor
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+variable, logreg as inputs
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</section>
+<section id="_preamble_tbd">
+<title>Preamble (TBD)</title>
+<itemizedlist>
+<listitem>
+<simpara>
+login
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+permissions
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+connection
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+</article>

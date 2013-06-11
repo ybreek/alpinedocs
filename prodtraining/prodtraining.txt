@@ -1,0 +1,75 @@
+Alpine Product Training
+=======================
+
+
+
+== Overview
+
+In this set of activities we are going to explore a small subset of Alpine DataMiner's features and use these to create two alternate prediction models for a moderately large data set.  We will compare these prediction models using a graph called an ROC.
+Before we set about this task we need to be able to reliably execute certain elementary atomic tasks that will be needed repeatedly.
+
+
+=== Elementary Tasks ===  
+
+=== Log in to Alpine Data Miner ====
+
+
+
+=== Create a connection ====
+
+
+=== Create a Flow ====
+
+=== Connect two modules with a flow ====
+
+
+
+=== Set properties on a module ====
+
+
+=== Import Data from a CSV file ====
+
+
+=== Remap/rename certain columns on imported data ====
+
+=== Create a Join definition ====
+
+=== Run a flow ====
+
+
+=== Tasks ===
+
+* Import data from file ORD_2008
+* Import data from file carriers.txt
+
+* Initial flow
+
+* summary stats
+* null val rep
+* box plot
+* scatter plot
+
+* join
+* improved box plot
+
+
+* variable selection
+* sampling
+* training 
+** logreg
+** naive bayes
+* validation
+* ROC
+** nb, logreg, val as inputs
+* LogReg Predictor
+** variable, logreg as inputs
+
+=== Preamble (TBD) ===
+* login
+* permissions
+* connection
+
+
+
+
+
