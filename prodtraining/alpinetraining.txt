@@ -111,7 +111,7 @@ When running complicated flows with large data, it is time effective to run each
 To run a single module in the flow (assuming all the previous inputs have been computed and are ready) alt-click on the module and pick the "Step run" option.
 
 
-image:images/nullvalsteprun.png
+image:images/nullvalsteprun.png[Null Value Replacement Step Run]
 
 ===== Box plot
 
@@ -125,12 +125,12 @@ ORD 2008 |------> Box Plot
 
 Set the Box Plot configuration by double-clicking on the Box Plot module.
 
-image:images/boxplotcreate.png
+image:images/boxplotcreate.png[Box Plot Configuration]
 
 
 Step run the Box Plot module.  You will see a result similar to the following.
 
-image:images/boxplotresults.png
+image:images/boxplotresults.png[Box Plot Results]
 
 
 ===== Scatterplot matrix
@@ -155,7 +155,7 @@ Now step run the Scatter Plot Matrix module.  This may take a while.  Look at th
 
 When done you should see a diagram similar to this.  
 
-image:images/scatterplot.png
+image:images/scatterplot.png[Scatter Plot Matrix Results]
 
 
 To be able to see the diagram fully, click on the arrow at the far right of the console menu. This is an arrow pointing up and to the right and on clicking will expand the window to give you a full view of the Scatter Plot Matrix.
@@ -164,43 +164,67 @@ This tells us that depdelay and arrdelay are strongly correlated, i.e. if the pl
 
 == Model Creation
 
+In this phase we will create our two differnt predictive models and in the next phase we will evaluate them.
+As usual we will create our flow incrementally and Step Run each new module.  Each segment will be created according to a schematic for that segment.
+
+At the end of this phase the full flow should look like
+
+
+
+
 ==== Variable selection
 
 Schematic for flow.
 
-[NOTE]
-Figure with Variable Selection flow
-What variables do we pick here?
+.......................................
+Null Value Replacement |-----> Variable 
+.......................................
+
 
 ==== Random Sampling
-Create two data sets by random sampling from original data.
+Now we create two data sets by random sampling from original data.  We want to use one as training set to create our model and the other as a validation set to see how good our model turned out.
 
 Schematic for flow.
 
-==== Training Set
-[NOTE]
-Do we explain what Training Set is?
+.......................................
+Variable |-----> Random Sampling 
+.......................................
+
+Configuration
+
+==== Training
 
 Schematic for flow.
+.......................................
+Random Sampling |-----> Training  
+.......................................
 
-==== Validation Set
-[NOTE]
-Do we explain what Validation Set is?
+==== Validation
 
 Schematic for flow.
+.......................................
+Random Sampling |-----> Validation  
+.......................................
 
 ===== Logistic Regression
-[NOTE]
-Do we explain what Logistic Regression is?
 
 Schematic for flow.
+
+.......................................
+Training |----->  Logistic Regression 
+.......................................
+
+Configuration.
+
 
 ===== Naive Bayes
-[NOTE]
-Do we explain what Naive Bayes is?
 
 Schematic for flow.
+.......................................
+Training |----->  Naive Bayes 
+.......................................
 
+Configuration.
 
 == Model Evaluation
 
@@ -208,17 +232,37 @@ Schematic for flow.
 
 Schematic for flow.
 
-NB, Logreg, Validation Set as inputs
+.......................................
+Logistic Regression |-----> ROC
+.......................................
+
+.......................................
+Naive Bayes |----->  ROC 
+.......................................
+
+.......................................
+Validation |----->   ROC
+.......................................
+
+
 
 ==== LogReg Predictor
 
 Schematic for flow.
+.........................................................
+Logistic Regression |-----> LogReg Predictor
+.........................................................
+.........................................................
+Variable            |-----> LogReg Predictor
+.........................................................
 
-Variable Selection, Logreg as inputs
+== Iterating on the Model
 
+=== Overview
 
-
-
+Here we follow the steps in the Model Creation exercise but use more realistic predictors.
+ 
+ 
 
 
 == Appendix A Elementary Tasks  
@@ -244,9 +288,13 @@ Figure with properties dialog for Import File
 
 == Appendix B (Schematic syntax)
 
-* A Flow
+* A Flow Segment
 ..........................................
 SourceModuleName |---> TargetModuleName
 e.g. ORD2008 |---> Summary Statistics 
 ..........................................
+
+* The corresponding flow in the workspace
+
+
 

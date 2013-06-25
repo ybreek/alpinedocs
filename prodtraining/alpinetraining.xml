@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<book lang="en">
+<bookinfo>
+    <title>Alpine Product Training</title>
+</bookinfo>
+<chapter id="_overview">
+<title>Overview</title>
+<simpara>In the set of activities described in this document we are going to explore a subset of Alpine&#8217;s rich feature set.
+We will use Alpine to explore a moderately large data set using descriptive statistics.
+Then we will create two different prediction models for this data set, using a question with a yes/no outcome.
+We will then evaluate these prediction models and compare them using a graph called an ROC.</simpara>
+<simpara>The data set consists of details on airline arrivals and departures at Chicago&#8217;s O&#8217;Hare International Airport in the year 2008.
+We will use this data set to create a predictive model one using Naive Bayes and another using Logistic Regression to predict the probability of a flight being delayed or alternately to answer the question "Will this flight be delayed?"</simpara>
+<simpara>Before we set about this task we need to be able to reliably execute certain elementary atomic tasks that will be needed repeatedly.
+These tasks are identified in Appendix A.  Please make sure you are familiar with these operations especially Alpine account name, password, and datasource properties for the datasource you will use.</simpara>
+</chapter>
+<chapter id="_data_exploration">
+<title>Data Exploration</title>
+<simpara>In this stage we will import our data into an Alpine DataSource. Then we will do an initial exploration and simple cleanup of the data in preparation for modeling.  This stage will introduce us to some of the visualization capabilities of Alpine.</simpara>
+<section id="_set_up_initial_flow">
+<title>Set Up Initial flow</title>
+<simpara>We will set up a flow with multiple visualizations incrementally, one module at a time.
+When we are done we should have a flow in our workspace that looks like this.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/DataIngestDataExploration.png"/>
+  </imageobject>
+  <textobject><phrase>Data Exploration</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>We start by creating a Data Source.</simpara>
+</section>
+<section id="_import_data_from_csv_file">
+<title>Import data from csv file</title>
+<itemizedlist>
+<listitem>
+<simpara>
+You should have with you a csv file called 2008_ORD.csv or a zipped version of this file.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Expand the zip file if necessary.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Create an Alpine Data Source by importing this file (see Appendix A Elementary Tasks)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Once you are done you should be able to see a data source called ORD_2008 under ConnectionDemo.
+</simpara>
+</listitem>
+</itemizedlist>
+<section id="_summary_statistics">
+<title>Summary Statistics</title>
+<simpara>Once we have created a Data Source we will use it to do a sanity check of the data. The very first thing we do, something
+that is almost always the first step, is running Summary Statistics on the data.  The Summary Statistics module in Alpine does an inventory and sanity check of the data provided by the Data Source.  It then produces a tabular report with the results of its efforts.</simpara>
+<simpara>We will use the Summary Statistics module operating on data from the Data Source.</simpara>
+<simpara>Create a flow with the following schematic (see Appendix B for schematic syntax)</simpara>
+<literallayout class="monospaced">ORD 2008 |------&gt; Summary Statistics</literallayout>
+<simpara>Note that this requires you to drag and drop the modules for the two end points onto the workspace first and then make a connection
+between them as per the schematic.</simpara>
+<simpara>Here just for clarification we will show the association between the schematic and the actual image in the workspace.
+The schematic is above and the corresponding flow diagram is below.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/summaryflow.png"/>
+  </imageobject>
+  <textobject><phrase>Flow for Summary Statistics</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>Henceforth we&#8217;ll just use the schematic for brevity and show the state of the full flow only at a few intermediate checkpoints.</simpara>
+<simpara>Now we will need to run the flow.</simpara>
+<simpara>For this click on the "RUN" item on the top right of the menu bar.</simpara>
+<simpara>Now you will see status messages at the bottom in a console.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/summarystatsresultsrunning.png"/>
+  </imageobject>
+  <textobject><phrase>Console Messages Summary Statistics Running</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>Once the messages show that the flow has completed running,</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/summarystatsresultsdone.png"/>
+  </imageobject>
+  <textobject><phrase>Console Messages Summary Statistics Done</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>click on the Summary Statistics module icon in the flow.</simpara>
+<simpara>You will see the results that look similar to the following</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/summarystatssample.png"/>
+  </imageobject>
+  <textobject><phrase>Sample Data from Summary Statistics</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_null_value_replacement">
+<title>Null Value Replacement</title>
+<simpara>The output of the Summary Statistics run output will tell us how many null values there were and where.
+We need to replace null values with some concrete value such as 0 for numeric columns and '' for character columns.
+The Null Value Replacement module does this en masse over the whole Data Source.</simpara>
+<simpara>We add a segment to our existing flow.
+The new segment has the following schematic</simpara>
+<literallayout class="monospaced">ORD 2008 |------&gt; Null Value Replacement</literallayout>
+<simpara>Double click on the Null Value Replacement module and see a dialog box for configuration.
+We set the values in the dialog as follows</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/nullvalconfig.png"/>
+  </imageobject>
+  <textobject><phrase>Null Value Replacement Configuration</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>Now we run the flow again and when the flow has completed the values will have been replaced.</simpara>
+<simpara>We are now ready to do some exploratory visualization.</simpara>
+</section>
+<section id="_step_run_vs_run">
+<title>Step run vs Run</title>
+<simpara>When running complicated flows with large data, it is time effective to run each step of the flow separately once we know that the previous steps have been successful.  Otherwise all the previous steps will be run redundantly and with large data sets this will be wasteful of resources.</simpara>
+<simpara>To run a single module in the flow (assuming all the previous inputs have been computed and are ready) alt-click on the module and pick the "Step run" option.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/nullvalsteprun.png"/>
+  </imageobject>
+  <textobject><phrase>Null Value Replacement Step Run</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_box_plot">
+<title>Box plot</title>
+<simpara>We now explore arrival delay on different days of the week and their distribution using the Box Plot module.</simpara>
+<simpara>Add the following segment to the flow</simpara>
+<literallayout class="monospaced">ORD 2008 |------&gt; Box Plot</literallayout>
+<simpara>Set the Box Plot configuration by double-clicking on the Box Plot module.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/boxplotcreate.png"/>
+  </imageobject>
+  <textobject><phrase>Box Plot Configuration</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>Step run the Box Plot module.  You will see a result similar to the following.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/boxplotresults.png"/>
+  </imageobject>
+  <textobject><phrase>Box Plot Results</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_scatterplot_matrix">
+<title>Scatterplot matrix</title>
+<simpara>We want to explore correlations between variables to see which ones we might use in our predictive model.</simpara>
+<simpara>Add the following segment to the flow.</simpara>
+<literallayout class="monospaced">ORD 2008 |------&gt; Scatter Plot Matrix</literallayout>
+<simpara>Set the Scatter Plot Matrix configuration as follows</simpara>
+<simpara>Double click on the Scatter Plot Matrix module icon and select the following columns,</simpara>
+<simpara>dayofweek, arrdelay, depdelay, distance.</simpara>
+<simpara>Then save.</simpara>
+<simpara>Now step run the Scatter Plot Matrix module.  This may take a while.  Look at the console messages to tell you when you will be done.</simpara>
+<simpara>When done you should see a diagram similar to this.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/scatterplot.png"/>
+  </imageobject>
+  <textobject><phrase>Scatter Plot Matrix Results</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>To be able to see the diagram fully, click on the arrow at the far right of the console menu. This is an arrow pointing up and to the right and on clicking will expand the window to give you a full view of the Scatter Plot Matrix.</simpara>
+<simpara>This tells us that depdelay and arrdelay are strongly correlated, i.e. if the plane took off late it is mostl likely to arrive late at the next destination.  This is insightful but we don&#8217;t need data science to tell us this. However this is a very useful training exercise so we continue using this correlation for the predictive model.  In reality we would want to predict the delay long before the flight took off late from the previous destination.</simpara>
+</section>
+</section>
+</chapter>
+<chapter id="_model_creation">
+<title>Model Creation</title>
+<simpara>In this phase we will create our two differnt predictive models and in the next phase we will evaluate them.
+As usual we will create our flow incrementally and Step Run each new module.  Each segment will be created according to a schematic for that segment.</simpara>
+<simpara>At the end of this phase the full flow should look like</simpara>
+<section id="_variable_selection">
+<title>Variable selection</title>
+<simpara>Schematic for flow.</simpara>
+<literallayout class="monospaced">Null Value Replacement |-----&gt; Variable</literallayout>
+</section>
+<section id="_random_sampling">
+<title>Random Sampling</title>
+<simpara>Now we create two data sets by random sampling from original data.  We want to use one as training set to create our model and the other as a validation set to see how good our model turned out.</simpara>
+<simpara>Schematic for flow.</simpara>
+</section>
+<section id="_training_set">
+<title>Training Set</title>
+<simpara>Schematic for flow.</simpara>
+</section>
+<section id="_validation_set">
+<title>Validation Set</title>
+<simpara>Schematic for flow.</simpara>
+<section id="_logistic_regression">
+<title>Logistic Regression</title>
+<simpara>Schematic for flow.</simpara>
+</section>
+<section id="_naive_bayes">
+<title>Naive Bayes</title>
+<simpara>Schematic for flow.</simpara>
+</section>
+</section>
+</chapter>
+<chapter id="_model_evaluation">
+<title>Model Evaluation</title>
+<section id="_roc">
+<title>ROC</title>
+<simpara>Schematic for flow.</simpara>
+<simpara>NB, Logreg, Validation Set as inputs</simpara>
+</section>
+<section id="_logreg_predictor">
+<title>LogReg Predictor</title>
+<simpara>Schematic for flow.</simpara>
+<simpara>Variable Selection, Logreg as inputs</simpara>
+</section>
+</chapter>
+<chapter id="_iterating_on_the_model">
+<title>Iterating on the Model</title>
+<section id="_overview_2">
+<title>Overview</title>
+<simpara>Here we follow the steps in the Model Creation exercise but use more realistic predictors.</simpara>
+</section>
+</chapter>
+<chapter id="_appendix_a_elementary_tasks">
+<title>Appendix A Elementary Tasks</title>
+<itemizedlist>
+<listitem>
+<simpara>
+Log in to Alpine Miner
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Create a connection
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Create a Flow
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Set properties on a module
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Create a Data source by importing from a CSV file
+</simpara>
+</listitem>
+</itemizedlist>
+<note><simpara>Figure with properties dialog for Import File</simpara></note>
+<itemizedlist>
+<listitem>
+<simpara>
+Join two data sources
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Run a flow
+</simpara>
+</listitem>
+</itemizedlist>
+</chapter>
+<chapter id="_appendix_b_schematic_syntax">
+<title>Appendix B (Schematic syntax)</title>
+<itemizedlist>
+<listitem>
+<simpara>
+A Flow Segment
+</simpara>
+</listitem>
+</itemizedlist>
+<literallayout class="monospaced">SourceModuleName |---&gt; TargetModuleName
+e.g. ORD2008 |---&gt; Summary Statistics</literallayout>
+<itemizedlist>
+<listitem>
+<simpara>
+The corresponding flow in the workspace
+</simpara>
+</listitem>
+</itemizedlist>
+</chapter>
+</book>
