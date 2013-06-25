@@ -1,0 +1,10 @@
+a2x: ERROR: "dblatex" -t pdf -p "/usr/local/etc/asciidoc/dblatex/asciidoc-dblatex.xsl" -s "/usr/local/etc/asciidoc/dblatex/asciidoc-dblatex.sty"   "/Volumes/HybridSeagate/my/code/git/active/alpine/prodtraining/minertraining.xml" returned non-zero exit status 1
+
+[ note 
+
+ls -l /usr/local/etc/asciidoc/dblatex/asciidoc-dblatex.*
+gives the related stylesheets and stylefiles
+
+]
+
+

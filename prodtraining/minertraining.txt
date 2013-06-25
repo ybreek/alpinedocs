@@ -1,141 +1,166 @@
-Alpine Miner Product Training
-=============================
-
+Alpine Product Training
+=======================
 
 
 == Overview
 
-In the set of activities described in this document we are going to explore a subset of Alpine Data Miner's rich feature set.
-We will use Alpine Data Miner to create two different prediction models for a moderately large data set.  We will then evaluate these prediction models and compare them using a graph called an ROC.  
+In the set of activities described in this document we are going to explore a subset of Alpine's rich feature set.
+We will use Alpine to explore a moderately large data set using descriptive statistics.
+Then we will create two different prediction models for this data set, using a question with a yes/no outcome.  
+We will then evaluate these prediction models and compare them using a graph called an ROC.  
 
-The data set we will use consists of details on airline arrivals and departures at Chicago's O'Hare International Airport in the year 2008.
-We will use this data setto create two predictive model one using Naive Bayes and the other using Logistic Regression to predict the probability of a flight being delayed.
+The data set consists of details on airline arrivals and departures at Chicago's O'Hare International Airport in the year 2008.
+We will use this data set to create a predictive model one using Naive Bayes and another using Logistic Regression to predict the probability of a flight being delayed or alternately to answer the question "Will this flight be delayed?"
 
 Before we set about this task we need to be able to reliably execute certain elementary atomic tasks that will be needed repeatedly.
-
-[NOTE]
-I need formal names for Alpine, Miner, proper set of logos etc.
+These tasks are identified in Appendix A.  Please make sure you are familiar with these operations especially Alpine account name, password, and datasource properties for the datasource you will use.
 
 
-=== Elementary Tasks  
+== Data Exploration ==
 
-* Log in to Alpine Miner
- 
-* Create a connection
-
-* Create a Flow 
-
-* Set properties on a module 
-
-* Create a Data source by importing from a CSV file 
-
-* Join two data sources 
-
-* Run a flow 
-
-[NOTE]
-Note to reviewers. Should the above list of tasks be here, or in an appendix in this document or in a separate document called "Intro...." or something else?
-
-[NOTE]
-Somewhat off topic but v. important.
-Currently the documentation that comes with the Alpine download does not mention the username and password needed to create a connection.
-This is a huge showstopper and after downloading one simply can't do anything useful besides running canned flows.
-The download doc needs to be fixed.
-
-
-== Data Ingest and Data Exploration ==
-
-In this stage we will import our data into an Alpine Data Miner DataSource. Then we will do an initial exploration and simple cleanup of the data in preparation for modeling.  This stage will introduce us to some of the visualization capabilities 
-
-==== Import data from file ORD_2008
-
-* Expand the zip file 
-* Create an Alpine Miner DataSource by importing this file (see Elementary Tasks)
-
-[NOTE]
-Figure with properties dialog for Import File 
-
-When done you should see the following icon in your workspace.
-
-[NOTE]
-Figure of DataSource icon 
+In this stage we will import our data into an Alpine DataSource. Then we will do an initial exploration and simple cleanup of the data in preparation for modeling.  This stage will introduce us to some of the visualization capabilities of Alpine.
 
 ==== Set Up Initial flow
 
-Once we have created a DataSource we will use it to do an intial exploration of the data. The very first thing we do, something
-that is almost always the first step, is running Summary Statistics on teh data.  The Summary Statistics module in Alpine Data Miner does an inventory and sanity check of the data provided by the Data Source.  It then produces a tabular report with the results of it's efforts.
+We will set up a flow with multiple visualizations incrementally, one module at a time.  
+When we are done we should have a flow in our workspace that looks like this.
+
+image:images/DataIngestDataExploration.png[Data Exploration]
+
+We start by creating a Data Source.
+
+==== Import data from csv file
+
+* You should have with you a csv file called 2008_ORD.csv or a zipped version of this file. 
+* Expand the zip file if necessary.
+* Create an Alpine Data Source by importing this file (see Appendix A Elementary Tasks)
+* Once you are done you should be able to see a data source called ORD_2008 under ConnectionDemo.
+
 
 ===== Summary Statistics
 
-We use the Summary Statistics module operating on data from the Data Source.
+Once we have created a Data Source we will use it to do a sanity check of the data. The very first thing we do, something
+that is almost always the first step, is running Summary Statistics on the data.  The Summary Statistics module in Alpine does an inventory and sanity check of the data provided by the Data Source.  It then produces a tabular report with the results of its efforts.
 
-Create a flow with the following schematic (see Appendix for schematic syntax)
+We will use the Summary Statistics module operating on data from the Data Source.
+
+Create a flow with the following schematic (see Appendix B for schematic syntax)
+
 .....................................
 ORD 2008 |------> Summary Statistics 
 .....................................
 
+Note that this requires you to drag and drop the modules for the two end points onto the workspace first and then make a connection
+between them as per the schematic.
 
-[NOTE]
-Figure for flow
+Here just for clarification we will show the association between the schematic and the actual image in the workspace.
+The schematic is above and the corresponding flow diagram is below. 
 
-Then run the flow.
+image:images/summaryflow.png[Flow for Summary Statistics]
 
-Once the messages show that the flow has completed running, click on the Summary Statistics module.
-You will see the results as
+Henceforth we'll just use the schematic for brevity and show the state of the full flow only at a few intermediate checkpoints.
 
-[NOTE]
-Figure with Summary Statistic run output 
+Now we will need to run the flow.
 
-Placeholder
+For this click on the "RUN" item on the top right of the menu bar.
 
-[NOTE]
-Question to reviewers - how much to discuss about the content of the output.  What is important to discuss?
+
+Now you will see status messages at the bottom in a console.
+
+image:images/summarystatsresultsrunning.png[Console Messages Summary Statistics Running]
+
+Once the messages show that the flow has completed running, 
+
+image:images/summarystatsresultsdone.png[Console Messages Summary Statistics Done]
+
+click on the Summary Statistics module icon in the flow.
+
+You will see the results that look similar to the following 
+
+image:images/summarystatssample.png[Sample Data from Summary Statistics]
+
 
 ===== Null Value Replacement
 
-Summary statistics output will tell us how many null values there were and where.
+The output of the Summary Statistics run output will tell us how many null values there were and where.
 We need to replace null values with some concrete value such as 0 for numeric columns and '' for character columns.
 The Null Value Replacement module does this en masse over the whole Data Source.
 
+We add a segment to our existing flow.
+The new segment has the following schematic
+
+........................................
+ORD 2008 |------> Null Value Replacement 
+........................................
+
+
+Double click on the Null Value Replacement module and see a dialog box for configuration.
 We set the values in the dialog as follows
 
-[NOTE]
-Figure with dialog for setting replacement values
-
-Schematic for flow.
+image:images/nullvalconfig.png[Null Value Replacement Configuration]
 
 Now we run the flow again and when the flow has completed the values will have been replaced.
 
 We are now ready to do some exploratory visualization.
 
 
+===== Step run vs Run
+
+When running complicated flows with large data, it is time effective to run each step of the flow separately once we know that the previous steps have been successful.  Otherwise all the previous steps will be run redundantly and with large data sets this will be wasteful of resources.  
+
+To run a single module in the flow (assuming all the previous inputs have been computed and are ready) alt-click on the module and pick the "Step run" option.
+
+
+image:images/nullvalsteprun.png
+
 ===== Box plot
 
-Schematic for flow.
+We now explore arrival delay on different days of the week and their distribution using the Box Plot module.
 
-[NOTE]
-Need property settings for plot
+Add the following segment to the flow
+
+..........................
+ORD 2008 |------> Box Plot 
+..........................
+
+Set the Box Plot configuration by double-clicking on the Box Plot module.
+
+image:images/boxplotcreate.png
+
+
+Step run the Box Plot module.  You will see a result similar to the following.
+
+image:images/boxplotresults.png
+
 
 ===== Scatterplot matrix
 
-Schematic for flow.
+We want to explore correlations between variables to see which ones we might use in our predictive model.
 
-[NOTE]
-Need property settings for plot
+Add the following segment to the flow.
+
+........................................
+ORD 2008 |------> Scatter Plot Matrix 
+........................................
+
+Set the Scatter Plot Matrix configuration as follows
+
+Double click on the Scatter Plot Matrix module icon and select the following columns, 
+
+dayofweek, arrdelay, depdelay, distance.
+
+Then save.
+
+Now step run the Scatter Plot Matrix module.  This may take a while.  Look at the console messages to tell you when you will be done.
+
+When done you should see a diagram similar to this.  
+
+image:images/scatterplot.png
 
 
-When we are done we should have a flow in our workspace that looks like this
+To be able to see the diagram fully, click on the arrow at the far right of the console menu. This is an arrow pointing up and to the right and on clicking will expand the window to give you a full view of the Scatter Plot Matrix.
 
-image:images/DataIngestDataExploration.png[Data Ingest and Data Exploration]
-
-
-==== Import data from Carriers file
-
-Similar to the ORD_2008 import but for carriers.txt
-[NOTE]
-Where do we get the carriers.txt file?
-For that matter where do we get the zipped ORD_2008 file?
-
+This tells us that depdelay and arrdelay are strongly correlated, i.e. if the plane took off late it is mostl likely to arrive late at the next destination.  This is insightful but we don't need data science to tell us this. However this is a very useful training exercise so we continue using this correlation for the predictive model.  In reality we would want to predict the delay long before the flight took off late from the previous destination.
 
 == Model Creation
 
@@ -192,7 +217,32 @@ Schematic for flow.
 Variable Selection, Logreg as inputs
 
 
-== Appendix A (Schematic syntax)
+
+
+
+
+== Appendix A Elementary Tasks  
+
+* Log in to Alpine Miner
+ 
+* Create a connection
+
+* Create a Flow 
+
+* Set properties on a module 
+
+* Create a Data source by importing from a CSV file 
+
+[NOTE]
+Figure with properties dialog for Import File 
+
+
+* Join two data sources 
+
+* Run a flow 
+
+
+== Appendix B (Schematic syntax)
 
 * A Flow
 ..........................................
