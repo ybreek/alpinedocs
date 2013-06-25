@@ -172,13 +172,18 @@ At the end of this phase the full flow should look like
 
 
 
-==== Variable selection
+==== Variable Creation
 
 Schematic for flow.
 
 .......................................
 Null Value Replacement |-----> Variable 
 .......................................
+
+image:images/phase2/setvariable1.png[ Create a dependent variable ]
+
+image:images/phase2/setvariable2.png[ Condition for dependent variable ]
+
 
 
 ==== Random Sampling
@@ -192,6 +197,12 @@ Variable |-----> Random Sampling
 
 Configuration
 
+image:images/phase2/randomsampling1.png[ Generate Training and Validation Samples ]
+
+image:images/phase2/randomsampling1.png[ Sample sizes for Training and Validation Samples ]
+
+
+
 ==== Training
 
 Schematic for flow.
@@ -199,12 +210,18 @@ Schematic for flow.
 Random Sampling |-----> Training  
 .......................................
 
+image:images/phase2/training.png[ Pick Training Sample ]
+
+
+
 ==== Validation
 
 Schematic for flow.
 .......................................
 Random Sampling |-----> Validation  
 .......................................
+
+image:images/phase2/validation.png[ Pick Validation Sample ]
 
 ===== Logistic Regression
 
@@ -216,6 +233,10 @@ Training |----->  Logistic Regression
 
 Configuration.
 
+image:images/phase2/logreg1.png[ Configure Logistic Regression a ]
+
+image:images/phase2/logreg2.png[ Configure Logistic Regression b ]
+
 
 ===== Naive Bayes
 
@@ -225,6 +246,10 @@ Training |----->  Naive Bayes
 .......................................
 
 Configuration.
+
+image:images/phase2/naivebayes1.png[ Configure Naive Bayes a ]
+
+image:images/phase2/naivebayes2.png[ Configure Naive Bayes b ]
 
 == Model Evaluation
 
@@ -243,6 +268,10 @@ Naive Bayes |----->  ROC
 .......................................
 Validation |----->   ROC
 .......................................
+
+image:images/phase2/roc1.png[ Configure ROC ]
+
+image:images/phase2/roc2.png[ ROC results ]
 
 
 
@@ -263,6 +292,8 @@ Variable            |-----> LogReg Predictor
 Here we follow the steps in the Model Creation exercise but use more realistic predictors.
  
  
+[NOTE]
+Need more specifics now that we have the rest pretty much covered 
 
 
 == Appendix A Elementary Tasks  
