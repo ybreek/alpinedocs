@@ -19,17 +19,17 @@ These tasks are identified in Appendix A.  Please make sure you are familiar wit
 == Data Exploration ==
 
 In this stage we will import our data into an Alpine DataSource. Then we will do an initial exploration and simple cleanup of the data in preparation for modeling.  This stage will introduce us to some of the visualization capabilities of Alpine.
-
-==== Set Up Initial flow
-
 We will set up a flow with multiple visualizations incrementally, one module at a time.  
 When we are done we should have a flow in our workspace that looks like this.
 
-image:images/DataIngestDataExploration.png[Data Exploration]
+image:images/DataIngestDataExploration.png[height=600,width=600]
+
+Figure 1. Data Exploration
+
 
 We start by creating a Data Source.
 
-==== Import data from csv file
+=== Import data from csv file
 
 * You should have with you a csv file called 2008_ORD.csv or a zipped version of this file. 
 * Expand the zip file if necessary.
@@ -37,10 +37,9 @@ We start by creating a Data Source.
 * Once you are done you should be able to see a data source called ORD_2008 under ConnectionDemo.
 
 
-===== Summary Statistics
+=== Summary Statistics
 
-Once we have created a Data Source we will use it to do a sanity check of the data. The very first thing we do, something
-that is almost always the first step, is running Summary Statistics on the data.  The Summary Statistics module in Alpine does an inventory and sanity check of the data provided by the Data Source.  It then produces a tabular report with the results of its efforts.
+Once we have created a Data Source we will use it to do a sanity check of the data. Almost always the very first thing we do is to run Summary Statistics on the data.  The Summary Statistics module in Alpine does an inventory and sanity check of the data provided by the Data Source.  It then produces a tabular report with the results of its efforts.
 
 We will use the Summary Statistics module operating on data from the Data Source.
 
@@ -52,13 +51,7 @@ ORD 2008 |------> Summary Statistics
 
 Note that this requires you to drag and drop the modules for the two end points onto the workspace first and then make a connection
 between them as per the schematic.
-
-Here just for clarification we will show the association between the schematic and the actual image in the workspace.
-The schematic is above and the corresponding flow diagram is below. 
-
-image:images/summaryflow.png[Flow for Summary Statistics]
-
-Henceforth we'll just use the schematic for brevity and show the state of the full flow only at a few intermediate checkpoints.
+Henceforth use the schematic for brevity and show the state of the full flow only at a few intermediate checkpoints.
 
 Now we will need to run the flow.
 
@@ -67,24 +60,19 @@ For this click on the "RUN" item on the top right of the menu bar.
 
 Now you will see status messages at the bottom in a console.
 
-image:images/summarystatsresultsrunning.png[Console Messages Summary Statistics Running]
+image:images/summarystatsresultsrunning.png[ Console Messages Summary Statistics Running ]
 
 Once the messages show that the flow has completed running, 
 
-image:images/summarystatsresultsdone.png[Console Messages Summary Statistics Done]
+image:images/summarystatsresultsdone.png[ Console Messages Summary Statistics Done ]
 
 click on the Summary Statistics module icon in the flow.
 
 You will see the results that look similar to the following 
 
-image:images/summarystatssample.png[Sample Data from Summary Statistics]
+image:images/summarystatssample.png[ Sample Data from Summary Statistics ]
 
-.Thumbnail linked to full image
-image:/images/summaryflow.png[
-"Summary Flow",width=128,
-link="/images/summaryflow.png"]
-
-===== Null Value Replacement
+=== Null Value Replacement
 
 The output of the Summary Statistics run output will tell us how many null values there were and where.
 We need to replace null values with some concrete value such as 0 for numeric columns and '' for character columns.
@@ -101,23 +89,23 @@ ORD 2008 |------> Null Value Replacement
 Double click on the Null Value Replacement module and see a dialog box for configuration.
 We set the values in the dialog as follows
 
-image:images/nullvalconfig.png[Null Value Replacement Configuration]
+image:images/nullvalconfig.png["Null Value Replacement", height=500, width=450 ]
 
 Now we run the flow again and when the flow has completed the values will have been replaced.
 
 We are now ready to do some exploratory visualization.
 
 
-===== Step run vs Run
+==== Step run vs Run
 
 When running complicated flows with large data, it is time effective to run each step of the flow separately once we know that the previous steps have been successful.  Otherwise all the previous steps will be run redundantly and with large data sets this will be wasteful of resources.  
 
 To run a single module in the flow (assuming all the previous inputs have been computed and are ready) alt-click on the module and pick the "Step run" option.
 
 
-image:images/nullvalsteprun.png[Null Value Replacement Step Run]
+image:images/nullvalsteprun.png[ Null Value Replacement Step Run ]
 
-===== Box plot
+=== Box plot
 
 We now explore arrival delay on different days of the week and their distribution using the Box Plot module.
 
@@ -129,15 +117,15 @@ ORD 2008 |------> Box Plot
 
 Set the Box Plot configuration by double-clicking on the Box Plot module.
 
-image:images/boxplotcreate.png[Box Plot Configuration]
+image:images/boxplotcreate.png[ Box Plot Configuration, height=400, width=400]
 
 
 Step run the Box Plot module.  You will see a result similar to the following.
 
-image:images/boxplotresults.png[Box Plot Results]
+image:images/boxplotresults.png[ Box Plot Results, height=400, width=400 ]
 
 
-===== Scatterplot matrix
+=== Scatterplot matrix
 
 We want to explore correlations between variables to see which ones we might use in our predictive model.
 
@@ -159,7 +147,7 @@ Now step run the Scatter Plot Matrix module.  This may take a while.  Look at th
 
 When done you should see a diagram similar to this.  
 
-image:images/scatterplot.png[Scatter Plot Matrix Results]
+image:images/scatterplot.png[ Scatter Plot Matrix Results ]
 
 
 To be able to see the diagram fully, click on the arrow at the far right of the console menu. This is an arrow pointing up and to the right and on clicking will expand the window to give you a full view of the Scatter Plot Matrix.
@@ -174,9 +162,7 @@ As usual we will create our flow incrementally and Step Run each new module.  Ea
 At the end of this phase the full flow should look like
 
 
-
-
-==== Variable Creation
+=== Variable Creation
 
 Schematic for flow.
 
@@ -190,7 +176,7 @@ image:images/phase2/setvariable2.png[ Condition for dependent variable ]
 
 
 
-==== Random Sampling
+=== Random Sampling
 Now we create two data sets by random sampling from original data.  We want to use one as training set to create our model and the other as a validation set to see how good our model turned out.
 
 Schematic for flow.
@@ -206,8 +192,7 @@ image:images/phase2/randomsampling1.png[ Generate Training and Validation Sample
 image:images/phase2/randomsampling1.png[ Sample sizes for Training and Validation Samples ]
 
 
-
-==== Training
+=== Training
 
 Schematic for flow.
 .......................................
@@ -218,7 +203,7 @@ image:images/phase2/training.png[ Pick Training Sample ]
 
 
 
-==== Validation
+=== Validation
 
 Schematic for flow.
 .......................................
@@ -227,7 +212,7 @@ Random Sampling |-----> Validation
 
 image:images/phase2/validation.png[ Pick Validation Sample ]
 
-===== Logistic Regression
+=== Logistic Regression
 
 Schematic for flow.
 
@@ -242,7 +227,7 @@ image:images/phase2/logreg1.png[ Configure Logistic Regression a ]
 image:images/phase2/logreg2.png[ Configure Logistic Regression b ]
 
 
-===== Naive Bayes
+=== Naive Bayes
 
 Schematic for flow.
 .......................................
@@ -257,7 +242,7 @@ image:images/phase2/naivebayes2.png[ Configure Naive Bayes b ]
 
 == Model Evaluation
 
-==== ROC
+=== ROC
 
 Schematic for flow.
 
@@ -279,7 +264,7 @@ image:images/phase2/roc2.png[ ROC results ]
 
 
 
-==== LogReg Predictor
+=== LogReg Predictor
 
 Schematic for flow.
 .........................................................
@@ -302,7 +287,7 @@ Need more specifics now that we have the rest pretty much covered
 
 == Appendix A Elementary Tasks  
 
-* Log in to Alpine Miner
+* Log in to Alpine
  
 * Create a connection
 

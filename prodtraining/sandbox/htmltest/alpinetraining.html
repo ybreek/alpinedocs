@@ -1,0 +1,1150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.8" />
+<title>Alpine Product Training</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+@media screen {
+  body {
+    max-width: 50em; /* approximately 80 characters wide */
+    margin-left: 16em;
+  }
+
+  #toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+    margin: 0;
+    overflow: auto;
+    border-right: 3px solid #f8f8f8;
+    background-color: white;
+  }
+
+  #toc .toclevel1 {
+    margin-top: 0.5em;
+  }
+
+  #toc .toclevel2 {
+    margin-top: 0.25em;
+    display: list-item;
+    color: #aaaaaa;
+  }
+
+  #toctitle {
+    margin-top: 0.5em;
+  }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Alpine Product Training</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_overview">1. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>In the set of activities described in this document we are going to explore a subset of Alpine&#8217;s rich feature set.
+We will use Alpine to explore a moderately large data set using descriptive statistics.
+Then we will create two different prediction models for this data set, using a question with a yes/no outcome.
+We will then evaluate these prediction models and compare them using a graph called an ROC.</p></div>
+<div class="paragraph"><p>The data set consists of details on airline arrivals and departures at Chicago&#8217;s O&#8217;Hare International Airport in the year 2008.
+We will use this data set to create a predictive model one using Naive Bayes and another using Logistic Regression to predict the probability of a flight being delayed or alternately to answer the question "Will this flight be delayed?"</p></div>
+<div class="paragraph"><p>Before we set about this task we need to be able to reliably execute certain elementary atomic tasks that will be needed repeatedly.
+These tasks are identified in Appendix A.  Please make sure you are familiar with these operations especially Alpine account name, password, and datasource properties for the datasource you will use.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_exploration">2. Data Exploration</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>In this stage we will import our data into an Alpine DataSource. Then we will do an initial exploration and simple cleanup of the data in preparation for modeling.  This stage will introduce us to some of the visualization capabilities of Alpine.
+We will set up a flow with multiple visualizations incrementally, one module at a time.
+When we are done we should have a flow in our workspace that looks like this.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/DataIngestDataExploration.png" alt="images/DataIngestDataExploration.png" width="600" height="600" />
+</span></p></div>
+<div class="paragraph"><p>Figure 1. Data Exploration</p></div>
+<div class="paragraph"><p>We start by creating a Data Source.</p></div>
+<div class="sect2">
+<h3 id="_import_data_from_csv_file">2.1. Import data from csv file</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+You should have with you a csv file called 2008_ORD.csv or a zipped version of this file.
+</p>
+</li>
+<li>
+<p>
+Expand the zip file if necessary.
+</p>
+</li>
+<li>
+<p>
+Create an Alpine Data Source by importing this file (see Appendix A Elementary Tasks)
+</p>
+</li>
+<li>
+<p>
+Once you are done you should be able to see a data source called ORD_2008 under ConnectionDemo.
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_summary_statistics">2.2. Summary Statistics</h3>
+<div class="paragraph"><p>Once we have created a Data Source we will use it to do a sanity check of the data. Almost always the very first thing we do is to run Summary Statistics on the data.  The Summary Statistics module in Alpine does an inventory and sanity check of the data provided by the Data Source.  It then produces a tabular report with the results of its efforts.</p></div>
+<div class="paragraph"><p>We will use the Summary Statistics module operating on data from the Data Source.</p></div>
+<div class="paragraph"><p>Create a flow with the following schematic (see Appendix B for schematic syntax)</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>ORD 2008 |------&gt; Summary Statistics</code></pre>
+</div></div>
+<div class="paragraph"><p>Note that this requires you to drag and drop the modules for the two end points onto the workspace first and then make a connection
+between them as per the schematic.
+Henceforth use the schematic for brevity and show the state of the full flow only at a few intermediate checkpoints.</p></div>
+<div class="paragraph"><p>Now we will need to run the flow.</p></div>
+<div class="paragraph"><p>For this click on the "RUN" item on the top right of the menu bar.</p></div>
+<div class="paragraph"><p>Now you will see status messages at the bottom in a console.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/summarystatsresultsrunning.png" alt="Console Messages Summary Statistics Running" />
+</span></p></div>
+<div class="paragraph"><p>Once the messages show that the flow has completed running,</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/summarystatsresultsdone.png" alt="Console Messages Summary Statistics Done" />
+</span></p></div>
+<div class="paragraph"><p>click on the Summary Statistics module icon in the flow.</p></div>
+<div class="paragraph"><p>You will see the results that look similar to the following</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/summarystatssample.png" alt="Sample Data from Summary Statistics" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_null_value_replacement">2.3. Null Value Replacement</h3>
+<div class="paragraph"><p>The output of the Summary Statistics run output will tell us how many null values there were and where.
+We need to replace null values with some concrete value such as 0 for numeric columns and '' for character columns.
+The Null Value Replacement module does this en masse over the whole Data Source.</p></div>
+<div class="paragraph"><p>We add a segment to our existing flow.
+The new segment has the following schematic</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>ORD 2008 |------&gt; Null Value Replacement</code></pre>
+</div></div>
+<div class="paragraph"><p>Double click on the Null Value Replacement module and see a dialog box for configuration.
+We set the values in the dialog as follows</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/nullvalconfig.png" alt="Null Value Replacement" width="450" height="500" />
+</span></p></div>
+<div class="paragraph"><p>Now we run the flow again and when the flow has completed the values will have been replaced.</p></div>
+<div class="paragraph"><p>We are now ready to do some exploratory visualization.</p></div>
+<div class="sect3">
+<h4 id="_step_run_vs_run">2.3.1. Step run vs Run</h4>
+<div class="paragraph"><p>When running complicated flows with large data, it is time effective to run each step of the flow separately once we know that the previous steps have been successful.  Otherwise all the previous steps will be run redundantly and with large data sets this will be wasteful of resources.</p></div>
+<div class="paragraph"><p>To run a single module in the flow (assuming all the previous inputs have been computed and are ready) alt-click on the module and pick the "Step run" option.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/nullvalsteprun.png" alt="Null Value Replacement Step Run" />
+</span></p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_box_plot">2.4. Box plot</h3>
+<div class="paragraph"><p>We now explore arrival delay on different days of the week and their distribution using the Box Plot module.</p></div>
+<div class="paragraph"><p>Add the following segment to the flow</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>ORD 2008 |------&gt; Box Plot</code></pre>
+</div></div>
+<div class="paragraph"><p>Set the Box Plot configuration by double-clicking on the Box Plot module.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/boxplotcreate.png" alt="Box Plot Configuration" />
+</span></p></div>
+<div class="paragraph"><p>Step run the Box Plot module.  You will see a result similar to the following.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/boxplotresults.png" alt="Box Plot Results" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_scatterplot_matrix">2.5. Scatterplot matrix</h3>
+<div class="paragraph"><p>We want to explore correlations between variables to see which ones we might use in our predictive model.</p></div>
+<div class="paragraph"><p>Add the following segment to the flow.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>ORD 2008 |------&gt; Scatter Plot Matrix</code></pre>
+</div></div>
+<div class="paragraph"><p>Set the Scatter Plot Matrix configuration as follows</p></div>
+<div class="paragraph"><p>Double click on the Scatter Plot Matrix module icon and select the following columns,</p></div>
+<div class="paragraph"><p>dayofweek, arrdelay, depdelay, distance.</p></div>
+<div class="paragraph"><p>Then save.</p></div>
+<div class="paragraph"><p>Now step run the Scatter Plot Matrix module.  This may take a while.  Look at the console messages to tell you when you will be done.</p></div>
+<div class="paragraph"><p>When done you should see a diagram similar to this.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/scatterplot.png" alt="Scatter Plot Matrix Results" />
+</span></p></div>
+<div class="paragraph"><p>To be able to see the diagram fully, click on the arrow at the far right of the console menu. This is an arrow pointing up and to the right and on clicking will expand the window to give you a full view of the Scatter Plot Matrix.</p></div>
+<div class="paragraph"><p>This tells us that depdelay and arrdelay are strongly correlated, i.e. if the plane took off late it is mostl likely to arrive late at the next destination.  This is insightful but we don&#8217;t need data science to tell us this. However this is a very useful training exercise so we continue using this correlation for the predictive model.  In reality we would want to predict the delay long before the flight took off late from the previous destination.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_model_creation">3. Model Creation</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>In this phase we will create our two differnt predictive models and in the next phase we will evaluate them.
+As usual we will create our flow incrementally and Step Run each new module.  Each segment will be created according to a schematic for that segment.</p></div>
+<div class="paragraph"><p>At the end of this phase the full flow should look like</p></div>
+<div class="sect2">
+<h3 id="_variable_creation">3.1. Variable Creation</h3>
+<div class="paragraph"><p>Schematic for flow.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Null Value Replacement |-----&gt; Variable</code></pre>
+</div></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/setvariable1.png" alt="Create a dependent variable" />
+</span></p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/setvariable2.png" alt="Condition for dependent variable" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_random_sampling">3.2. Random Sampling</h3>
+<div class="paragraph"><p>Now we create two data sets by random sampling from original data.  We want to use one as training set to create our model and the other as a validation set to see how good our model turned out.</p></div>
+<div class="paragraph"><p>Schematic for flow.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Variable |-----&gt; Random Sampling</code></pre>
+</div></div>
+<div class="paragraph"><p>Configuration</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/randomsampling1.png" alt="Generate Training and Validation Samples" />
+</span></p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/randomsampling1.png" alt="Sample sizes for Training and Validation Samples" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_training">3.3. Training</h3>
+<div class="paragraph"><p>Schematic for flow.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Random Sampling |-----&gt; Training</code></pre>
+</div></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/training.png" alt="Pick Training Sample" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_validation">3.4. Validation</h3>
+<div class="paragraph"><p>Schematic for flow.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Random Sampling |-----&gt; Validation</code></pre>
+</div></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/validation.png" alt="Pick Validation Sample" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_logistic_regression">3.5. Logistic Regression</h3>
+<div class="paragraph"><p>Schematic for flow.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Training |-----&gt;  Logistic Regression</code></pre>
+</div></div>
+<div class="paragraph"><p>Configuration.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/logreg1.png" alt="Configure Logistic Regression a" />
+</span></p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/logreg2.png" alt="Configure Logistic Regression b" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_naive_bayes">3.6. Naive Bayes</h3>
+<div class="paragraph"><p>Schematic for flow.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Training |-----&gt;  Naive Bayes</code></pre>
+</div></div>
+<div class="paragraph"><p>Configuration.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/naivebayes1.png" alt="Configure Naive Bayes a" />
+</span></p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/naivebayes2.png" alt="Configure Naive Bayes b" />
+</span></p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_model_evaluation">4. Model Evaluation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_roc">4.1. ROC</h3>
+<div class="paragraph"><p>Schematic for flow.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Logistic Regression |-----&gt; ROC</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Naive Bayes |-----&gt;  ROC</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Validation |-----&gt;   ROC</code></pre>
+</div></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/roc1.png" alt="Configure ROC" />
+</span></p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/phase2/roc2.png" alt="ROC results" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_logreg_predictor">4.2. LogReg Predictor</h3>
+<div class="paragraph"><p>Schematic for flow.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Logistic Regression |-----&gt; LogReg Predictor</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Variable            |-----&gt; LogReg Predictor</code></pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_iterating_on_the_model">5. Iterating on the Model</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_2">5.1. Overview</h3>
+<div class="paragraph"><p>Here we follow the steps in the Model Creation exercise but use more realistic predictors.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Need more specifics now that we have the rest pretty much covered</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_a_elementary_tasks">6. Appendix A Elementary Tasks</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Log in to Alpine
+</p>
+</li>
+<li>
+<p>
+Create a connection
+</p>
+</li>
+<li>
+<p>
+Create a Flow
+</p>
+</li>
+<li>
+<p>
+Set properties on a module
+</p>
+</li>
+<li>
+<p>
+Create a Data source by importing from a CSV file
+</p>
+</li>
+</ul></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Figure with properties dialog for Import File</td>
+</tr></table>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Join two data sources
+</p>
+</li>
+<li>
+<p>
+Run a flow
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_b_schematic_syntax">7. Appendix B (Schematic syntax)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+A Flow Segment
+</p>
+</li>
+</ul></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>SourceModuleName |---&gt; TargetModuleName
+e.g. ORD2008 |---&gt; Summary Statistics</code></pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The corresponding flow in the workspace
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2013-06-28 01:13:55 PDT
+</div>
+</div>
+</body>
+</html>
